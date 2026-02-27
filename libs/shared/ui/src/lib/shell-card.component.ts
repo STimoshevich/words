@@ -5,16 +5,8 @@ import { IonCard, IonCardContent, IonCardHeader, IonCardTitle } from '@ionic/ang
   selector: 'words-shell-card',
   standalone: true,
   imports: [IonCard, IonCardHeader, IonCardTitle, IonCardContent],
-  template: `
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>{{ title() }}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ng-content></ng-content>
-      </ion-card-content>
-    </ion-card>
-  `
+  templateUrl: './shell-card.component.html',
+  styleUrls: ['./shell-card.component.less']
 })
 export class ShellCardComponent {
   readonly title = input.required<string>();

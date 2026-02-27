@@ -7,12 +7,16 @@
   "targets": {
     "build": {
       "executor": "@nx/angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/mobile",
         "index": "apps/mobile/src/index.html",
         "browser": "apps/mobile/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/mobile/tsconfig.app.json",
         "assets": [
           {
@@ -20,7 +24,10 @@
             "input": "apps/mobile/public"
           }
         ],
-        "styles": ["apps/mobile/src/global.css", "apps/mobile/src/theme/variables.css"]
+        "styles": [
+          "apps/mobile/src/global.less",
+          "apps/mobile/src/theme/variables.less"
+        ]
       },
       "configurations": {
         "production": {
