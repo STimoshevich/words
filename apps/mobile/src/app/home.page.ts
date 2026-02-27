@@ -2,6 +2,9 @@ import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { IonButton, IonText } from '@ionic/angular/standalone';
 
+const GRID_SIZE_X = 8;
+const GRID_SIZE_Y = 8;
+
 @Component({
   standalone: true,
   imports: [NgFor, IonText, IonButton],
@@ -10,12 +13,20 @@ import { IonButton, IonText } from '@ionic/angular/standalone';
       <header class="game-header">
         <ion-text>
           <h2>Платформа для игры в слова</h2>
-          <p>Ниже базовая сетка (3/4 экрана) для будущей игровой логики.</p>
+          <p>Адаптивная сетка {{ gridSizeX }}x{{ gridSizeY }}. Размеры вынесены в константы.</p>
         </ion-text>
       </header>
 
-      <div class="word-grid-platform" aria-label="Игровая сетка">
-        <div class="grid-cell" *ngFor="let cell of cells; let i = index" [attr.data-index]="i"></div>
+      <div class="grid-stage">
+        <div
+          class="word-grid-platform"
+          aria-label="Игровая сетка"
+          [style.grid-template-columns]="'repeat(' + gridSizeX + ', minmax(0, 1fr))'"
+          [style.grid-template-rows]="'repeat(' + gridSizeY + ', minmax(0, 1fr))'"
+          [style.aspect-ratio]="gridSizeX + ' / ' + gridSizeY"
+        >
+          <div class="grid-cell" *ngFor="let cell of cells; let i = index" [attr.data-index]="i"></div>
+        </div>
       </div>
 
       <footer class="controls-zone">
@@ -47,20 +58,25 @@ import { IonButton, IonText } from '@ionic/angular/standalone';
         color: var(--ion-color-medium, #666);
       }
 
+      .grid-stage {
+        min-height: 0;
+        display: grid;
+        place-items: center;
+      }
+
       .word-grid-platform {
         width: 100%;
-        min-height: 0;
+        height: 100%;
+        max-height: 100%;
         border: 2px solid var(--ion-color-primary);
         border-radius: 12px;
         padding: 8px;
         display: grid;
-        grid-template-columns: repeat(8, 1fr);
         gap: 6px;
         background: rgba(56, 128, 255, 0.06);
       }
 
       .grid-cell {
-        aspect-ratio: 1;
         border-radius: 6px;
         border: 1px dashed rgba(56, 128, 255, 0.55);
         background: rgba(255, 255, 255, 0.8);
@@ -74,5 +90,7 @@ import { IonButton, IonText } from '@ionic/angular/standalone';
   ]
 })
 export class HomePage {
-  protected readonly cells = Array.from({ length: 64 });
+  protected readonly gridSizeX = GRID_SIZE_X;
+  protected readonly gridSizeY = GRID_SIZE_Y;
+  protected readonly cells = Array.from({ length: GRID_SIZE_X * GRID_SIZE_Y });
 }
