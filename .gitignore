@@ -1,0 +1,9 @@
+node_modules
+dist
+tmp
+.nx
+.vscode
+coverage
+.DS_Store
+android
+ios

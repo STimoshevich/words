@@ -1,0 +1,57 @@
+{
+  "name": "mobile",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/mobile/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/mobile",
+        "index": "apps/mobile/src/index.html",
+        "browser": "apps/mobile/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/mobile/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/mobile/public"
+          }
+        ],
+        "styles": ["apps/mobile/src/global.css", "apps/mobile/src/theme/variables.css"]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nx/angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "mobile:build:production"
+        },
+        "development": {
+          "buildTarget": "mobile:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    }
+  }
+}
