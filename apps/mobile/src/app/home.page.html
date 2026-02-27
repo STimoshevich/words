@@ -1,0 +1,24 @@
+<section class="game-screen">
+  <header class="game-header">
+    <ion-text>
+      <h2>Платформа для игры в слова</h2>
+      <p>Адаптивная сетка {{ gridSizeX }}x{{ gridSizeY }}. Размеры вынесены в константы.</p>
+    </ion-text>
+  </header>
+
+  <div class="grid-stage">
+    <div
+      class="word-grid-platform"
+      aria-label="Игровая сетка"
+      [style.grid-template-columns]="'repeat(' + gridSizeX + ', minmax(0, 1fr))'"
+      [style.grid-template-rows]="'repeat(' + gridSizeY + ', minmax(0, 1fr))'"
+      [style.aspect-ratio]="gridSizeX + ' / ' + gridSizeY"
+    >
+      <div class="grid-cell" *ngFor="let cell of cells; let i = index" [attr.data-index]="i"></div>
+    </div>
+  </div>
+
+  <footer class="controls-zone">
+    <ion-button expand="block" fill="outline" disabled>Кнопки управления (заглушка)</ion-button>
+  </footer>
+</section>
