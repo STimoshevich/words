@@ -1,0 +1,48 @@
+{
+  "name": "words",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "nx": "nx",
+    "start": "nx serve mobile",
+    "build": "nx build mobile --configuration=production",
+    "build:dev": "nx build mobile --configuration=development",
+    "test": "nx test mobile",
+    "lint": "nx lint mobile",
+    "mobile:sync": "npx cap sync",
+    "mobile:android": "npx cap open android",
+    "mobile:ios": "npx cap open ios"
+  },
+  "dependencies": {
+    "@angular/animations": "latest",
+    "@angular/common": "latest",
+    "@angular/compiler": "latest",
+    "@angular/core": "latest",
+    "@angular/forms": "latest",
+    "@angular/platform-browser": "latest",
+    "@angular/platform-browser-dynamic": "latest",
+    "@angular/router": "latest",
+    "@capacitor/android": "latest",
+    "@capacitor/core": "latest",
+    "@capacitor/ios": "latest",
+    "@ionic/angular": "latest",
+    "ionicons": "latest",
+    "rxjs": "latest",
+    "tslib": "latest",
+    "zone.js": "latest"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "latest",
+    "@angular/cli": "latest",
+    "@angular/compiler-cli": "latest",
+    "@capacitor/cli": "latest",
+    "@nx/angular": "latest",
+    "@nx/eslint": "latest",
+    "@nx/jest": "latest",
+    "@nx/js": "latest",
+    "@nx/web": "latest",
+    "@nx/workspace": "latest",
+    "nx": "latest",
+    "typescript": "latest"
+  }
+}
